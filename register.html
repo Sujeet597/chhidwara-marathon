@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chhindwara Marathon 2024</title>
+    <link rel="shortcut icon" href="images/chhindwara.png" type="image/x-icon">
+
+    <!-- fontawesome -->
+    <script src="js/1cbbb02fe6.js" crossorigin="anonymous"></script>
+    <!-- svg icons -->
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- swiper css -->
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <!-- animate css -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- main css -->
+    <link rel="stylesheet" href="css/output.css">
+
+    <script>
+
+        // Function to switch to Step 2
+        function step2() {
+            // Perform validation for Step 1 inputs
+            if (validateStep1()) {
+                document.getElementById('step1').style.display = 'none';
+                document.getElementById('step2').style.display = 'block';
+                document.getElementById('theform').style.display = 'none';
+            }
+        }
+
+        // Function to switch to Step 1 (Back button in Step 2)
+        function step1() {
+            document.getElementById('step2').style.display = 'none';
+            document.getElementById('step1').style.display = 'block';
+            document.getElementById('theform').style.display = 'none';
+        }
+
+        // Function to switch to Step 3 (Next button in Step 2)
+        function step3() {
+            // Perform validation for Step 2 inputs
+            if (validateStep2()) {
+                document.getElementById('step2').style.display = 'none';
+            document.getElementById('step1').style.display = 'none';
+            document.getElementById('theform').style.display = 'block';
+            }
+        }
+
+        // Function to validate Step 1 inputs
+        function validateStep1() {
+            let valid = true;
+
+            // Validate Full Name
+            let fullName = document.getElementById('name').value.trim();
+            if (fullName === '') {
+                document.getElementById('name_error').innerText = 'Full Name is required';
+                valid = false;
+            } else {
+                document.getElementById('name_error').innerText = '';
+            }
+
+            // Validate Father's Name
+            let fatherName = document.getElementById('father_name').value.trim();
+            if (fatherName === '') {
+                document.getElementById('fname_error').innerText = "Father's Name is required";
+                valid = false;
+            } else {
+                document.getElementById('fname_error').innerText = '';
+            }
+
+            // Validate Email ID
+            let email = document.getElementById('email').value.trim();
+            if (email === '') {
+                document.getElementById('email_error').innerText = 'Email ID is required';
+                valid = false;
+            } else {
+                document.getElementById('email_error').innerText = '';
+            }
+
+            // Validate Mobile Number
+            let mobileNumber = document.getElementById('number').value.trim();
+            if (mobileNumber === '' || mobileNumber.length !== 10) {
+                document.getElementById('number_error').innerText = 'Mobile Number must be 10 digits';
+                valid = false;
+            } else {
+                document.getElementById('number_error').innerText = '';
+            }
+
+            // Validate Date of Birth
+            let dob = document.getElementById('date1').value.trim();
+            if (dob === '') {
+                document.getElementById('dob_error').innerText = 'Date of Birth is required';
+                valid = false;
+            } else {
+                document.getElementById('dob_error').innerText = '';
+            }
+
+            // Validate Gender
+            let gender = document.getElementById('gender').value.trim();
+            if (gender === '') {
+                document.getElementById('gender_error').innerText = 'Gender is required';
+                valid = false;
+            } else {
+                document.getElementById('gender_error').innerText = '';
+            }
+
+            return valid;
+        }
+
+        // Function to validate Step 2 inputs
+        function validateStep2() {
+            let valid = true;
+
+            // Validate State
+            let state = document.getElementById('inputState').value.trim();
+            if (state === '') {
+                document.getElementById('state_error').style.display = 'block';
+                valid = false;
+            } else {
+                document.getElementById('state_error').style.display = 'none';
+            }
+
+            // Validate City
+            let city = document.getElementById('inputDistrict').value.trim();
+            if (city === '') {
+                document.getElementById('city_error').style.display = 'block';
+                valid = false;
+            } else {
+                document.getElementById('city_error').style.display = 'none';
+            }
+
+            // Validate Pin Code
+            let pincode = document.getElementById('pincode').value.trim();
+            if (pincode === '' || pincode.length !== 6) {
+                document.getElementById('pincode_error').style.display = 'block';
+                valid = false;
+            } else {
+                document.getElementById('pincode_error').style.display = 'none';
+            }
+
+            // Validate Blood Group
+            let bloodGroup = document.getElementById('blood_group').value.trim();
+            if (bloodGroup === '') {
+                document.getElementById('blood_error').style.display = 'block';
+                valid = false;
+            } else {
+                document.getElementById('blood_error').style.display = 'none';
+            }
+
+            // Validate Marathon Category
+            let marathonCategory = document.getElementById('km').value.trim();
+            if (marathonCategory === '') {
+                document.getElementById('km_error').style.display = 'block';
+                valid = false;
+            } else {
+                document.getElementById('km_error').style.display = 'none';
+            }
+
+            // Validate Occupation
+            let occupation = document.getElementById('occupation').value.trim();
+            if (occupation === '') {
+                document.getElementById('occupation_error').style.display = 'block';
+                valid = false;
+            } else {
+                document.getElementById('occupation_error').style.display = 'none';
+            }
+
+            return valid;
+        }
+
+        // Function to allow only alphabets in input fields
+        function onlyAlphabets(event, input) {
+            var regex = /^[A-Za-z]+$/;
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        }
+
+        // Function to allow only numbers in input fields
+        function isNumber(event) {
+            var charCode = (event.which) ? event.which : event.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                event.preventDefault();
+                return false;
+            }
+            return true;
+        }
+
+        // Function to validate age based on Date of Birth
+        function validateAge(input) {
+            var dob = new Date(input.value);
+            var today = new Date();
+            var age = today.getFullYear() - dob.getFullYear();
+            if (today.getMonth() < dob.getMonth() || (today.getMonth() === dob.getMonth() && today.getDate() < dob.getDate())) {
+                age--;
+            }
+            if (age < 16) {
+                document.getElementById('checkdobs_error').innerText = 'Age must be 16 or above';
+            } else {
+                document.getElementById('checkdobs_error').innerText = '';
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <header id="header" class="sticky top-0 transition-[top] duration-300 z-40">
+        <div id="header-container">
+            <!-- bottom header -->
+            <div class="[.header-pinned_&amp;]:shadow-md bg-background transition-all duration-300">
+                <div class="container py-1">
+                    <div class="flex justify-between items-center ">
+                        <div>
+                            <a href="index.html" class="flex items-center gap-1">
+                                <img src="images/chhindwara.png" alt="img" class="w-20">
+                            </a>
+                        </div>
+                        <div class="flex items-center">
+                            <!-- desktop navbanr start -->
+                            <nav class="xl:block hidden">
+                                <ul class="flex items-center gap-[25px]">
+                                    <li class="leading-[164%] relative py-5 group">
+                                        <a href="#"
+                                            class="font-semibold text-lg font-jost group-hover:text-primary-foreground transition-all duration-500 py-5">Home</a>
+                                    </li>
+                                    <li class="leading-[164%] relative group">
+                                        <a href="about.html"
+                                            class="font-semibold text-lg font-jost group-hover:text-primary-foreground transition-all duration-500">About
+                                            Us</a>
+                                    </li>
+                                    <li class="leading-[164%] relative py-5 group">
+                                        <a href="#"
+                                            class=" font-semibold text-lg font-jost group-hover:text-primary-foreground transition-all duration-500">Services</a>
+                                    </li>
+                                    <li class="leading-[164%] relative group">
+                                        <a href="contact.html"
+                                            class=" font-semibold text-lg font-jost group-hover:text-primary-foreground transition-all duration-500">Contact
+                                            Us</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <!-- desktop navbanr end -->
+
+                            <!-- tab and mobile navbanr start -->
+                            <div class="block xl:hidden">
+                                <div
+                                    class="fixed left-0 top-0 w-full h-full bg-black/30 invisible transition-all offcanva-overlay">
+                                </div>
+                                <nav
+                                    class="bg-warm border-l-2 border-l-primary w-full max-w-md min-h-screen h-full overflow-y-auto p-7 shadow-md fixed -right-full top-0 z-50 transition-all duration-500 offcanva">
+                                    <div class="flex justify-between items-center">
+                                        <a href="" class="flex items-center gap-1 justify-start">
+                                            <img src="images/chhindwara.png" alt="img" class="w-16">
+                                            <span class="font-bold text-2xl ">Chhidwara</span>
+                                            <span class="font-bold text-2xl ">Marathon</span>
+
+                                        </a>
+                                        <div
+                                            class="bg-primary w-10 h-10 text-cream-foreground flex items-center justify-center rounded-[4px] left-4 offcanvaClose">
+                                            <i class="fa-solid fa-xmark text-xl" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <ul class=" mt-6">
+                                        <li class="leading-[164%] relative w-full dropdown">
+                                            <a href="#"
+                                                class="font-jost py-2.5 border-b border-b-slate-300 text-[#385469] flex justify-between items-center">
+                                                <span>Home</span>
+                                            </a>
+                                        </li>
+                                        <li class="leading-[164%] relative w-full">
+                                            <a href="about.html"
+                                                class="font-jost py-2.5 border-b border-b-slate-300 text-[#385469] flex justify-between items-center">About
+                                                Us</a>
+                                        </li>
+                                        <li class="leading-[164%] relative w-full dropdown">
+                                            <a href="#"
+                                                class="font-jost py-2.5 border-b border-b-slate-300 text-[#385469] flex justify-between items-center">
+                                                <span>Services</span>
+                                            </a>
+                                        </li>
+
+
+                                        <li class="leading-[164%] relative w-full ">
+                                            <a href="contact.html"
+                                                class="text-[#385469] font-jost hover:text-secondary-foreground transition-all duration-500 py-2.5 block border-b border-b-slate-300">Contact
+                                                Us</a>
+                                        </li>
+                                        <li class="leading-[164%] relative w-full ">
+                                            <a href="contact.html"
+                                                class="text-[#385469] font-jost hover:text-secondary-foreground transition-all duration-500 py-2.5 block border-b border-b-slate-300">Login</a>
+                                        </li>
+                                        <li class="leading-[164%] relative w-full ">
+                                            <a href="contact.html"
+                                                class="text-[#385469] font-jost hover:text-secondary-foreground transition-all duration-500 py-2.5 block border-b border-b-slate-300">Register</a>
+                                        </li>
+                                    </ul>
+
+                                    <!-- contact info start -->
+                                    <div class="mt-5">
+                                        <div>
+                                            <h4 class="text-xl font-bold text-[#385469]">Contact Info</h4>
+                                            <ul class="mt-5 flex flex-col gap-[15px]">
+                                                <li>
+                                                    <p>
+                                                        <i class="fa-solid fa-phone text-primary-foreground"
+                                                            aria-hidden="true"></i> <a href=""
+                                                            class="ml-2.5">+919993380898</a>
+                                                    </p>
+                                                </li>
+                                                <li>
+                                                    <p>
+                                                        <i class="fa-solid fa-envelope text-primary-foreground"
+                                                            aria-hidden="true"></i> <a href=""
+                                                            class="ml-2.5">chhindwaramarathon@gmail.com</a>
+                                                    </p>
+                                                </li>
+                                                <li>
+                                                    <p>
+                                                        <i class="fa-solid fa-location-dot text-primary-foreground"
+                                                            aria-hidden="true"></i> <span class="ml-2.5">DATCC- Office
+                                                            of The Collector, Chhindwara-480001, Madhya Pradesh</span>
+                                                    </p>
+                                                </li>
+                                                <li>
+                                                    <p>
+                                                        <i class="fa-solid fa-location-dot text-primary-foreground"
+                                                            aria-hidden="true"></i> <span class="ml-2.5">Uma Adventure-
+                                                            H.No.35, Block Colony, Tamia, Dist. Chhindwara-480559,
+                                                            Madhya Pradesh</span>
+                                                    </p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="mt-5">
+                                            <a href="contact.html"
+                                                class="bg-primary text-cream-foreground rounded-md sm:flex hidden items-center gap-2.5  btn after:bg-green">Register
+                                            </a>
+                                        </div>
+                                        <ul class="flex items-center gap-[14px] mt-6">
+                                            <li><a href=""
+                                                    class="rounded-md w-11 h-11 flex items-center justify-center text-muted-foreground bg-background hover:bg-primary transition-all duration-500"><i
+                                                        class="fa-brands fa-facebook-f " aria-hidden="true"></i></a>
+                                            </li>
+                                            <li><a href=""
+                                                    class="rounded-md w-11 h-11 flex items-center justify-center text-muted-foreground bg-background hover:bg-primary transition-all duration-500"><i
+                                                        class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+                                            <li><a href=""
+                                                    class="rounded-md w-11 h-11 flex items-center justify-center text-muted-foreground bg-background hover:bg-primary transition-all duration-500"><i
+                                                        class="fa-brands fa-linkedin" aria-hidden="true"></i></a></li>
+                                            <li><a href=""
+                                                    class="rounded-md w-11 h-11 flex items-center justify-center text-muted-foreground bg-background hover:bg-primary transition-all duration-500"><i
+                                                        class="fa-brands fa-pinterest-p" aria-hidden="true"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- contact info end -->
+                                </nav>
+                            </div>
+                            <!-- tab and mobile navbanr end -->
+
+                            <!-- search, toggle and contact btn start -->
+                            <div class="flex items-center gap-6 ml-10 ">
+                                <!-- <p class="h-11 w-[1px] bg-muted xl:block hidden"></p> -->
+                                <a href="contact.html"
+                                    class="bg-primary text-cream-foreground rounded-md sm:flex hidden items-center gap-2.5  btn after:bg-green">Login
+                                </a>
+                                <div class="block xl:hidden">
+                                    <div
+                                        class="flex flex-col items-end cursor-pointer transition-all duration-500 offcanvaTragger">
+                                        <span class="block h-[3px] w-5 bg-muted"></span>
+                                        <span class="block h-[3px] w-7.5 bg-muted mt-2"></span>
+                                        <span class="block h-[3px] w-5 bg-muted mt-2"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- section is for testimonial -->
+                            <!-- search, toggle and contact btn end -->
+                            <form action="#"
+                                class="opacity-0 invisible transition-all duration-500 absolute left-0 bottom-0 w-full lg:h-[calc(100%-32%)] md:h-[calc(100%-50%)] h-[calc(100%-0%)] search-form ">
+                                <input type="text" name="search" id="search" placeholder="Search here"
+                                    class="w-full h-full border border-gray-400 px-10 rounded-md outline-none">
+                                <label for="search"
+                                    class="absolute right-10 top-1/2 -translate-y-1/2 cursor-pointer search-close">
+                                    <i class="fa-solid fa-xmark border-gray-400  text-xl" aria-hidden="true"></i>
+                                </label>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- bottom header -->
+        </div>
+    </header>
+    <section class="bg-warm banner-height pt-[78px] h-[850px] lg:mb-15 mb-10 relative">
+        <div class="container relative">
+            <div class="flex flex-col items-center relative z-10 py-10 w-2/3 mx-auto">
+                <div class="container mx-auto">
+                    <h4 class="text-center text-2xl font-bold mb-6"><span style="color:black">Registration</span></h4>
+                    <form id="reg">
+                        <!-- Step 1 -->
+                        <div id="step1" class="step">
+                            <div class="mx-3">
+                                <div class="grid md:grid-cols-2 gap-3 items-center">
+                                    <div class="w-full">
+                                        <div>
+                                            <label class="block text-gray-700 text-sm font-bold mb-2">Full Name<span
+                                                    class="text-red-500 text-xs">*</span></label>
+                                            <input type="text"
+                                                class="form-control change w-full px-3 py-2 border border-gray-300 rounded"
+                                                placeholder="Enter Name" onkeypress="return onlyAlphabets(event,this);"
+                                                autocomplete="off" required id="name">
+                                            <span id="name_error" class="text-red-500 text-xs"> </span>
+                                        </div>
+                                    </div>
+                                    <div class="w-full">
+                                        <div>
+                                            <label class="block text-gray-700 text-sm font-bold mb-2">Father's Name<span
+                                                    class="text-red-500 text-xs">*</span></label>
+                                            <input type="text"
+                                                class="form-control change w-full px-3 py-2 border border-gray-300 rounded"
+                                                id="father_name" placeholder="Enter Father Name"
+                                                onkeypress="return onlyAlphabets(event,this);" required
+                                                autocomplete="off">
+                                            <span id="fname_error" class="text-red-500 text-xs"> </span>
+                                        </div>
+                                    </div>
+                                    <div class="w-full">
+                                        <div>
+                                            <label class="block text-gray-700 text-sm font-bold mb-2">Email ID<span
+                                                    class="text-red-500 text-xs">*</span></label>
+                                            <input type="email"
+                                                class="form-control change w-full px-3 py-2 border border-gray-300 rounded"
+                                                name="email" placeholder="Enter Email ID" required autocomplete="off"
+                                                id="email">
+                                            <span id="email_error" class="text-red-500 text-xs"> </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="w-full">
+                                        <div>
+                                            <label class="block text-gray-700 text-sm font-bold mb-2">Mobile Number<span
+                                                    class="text-red-500 text-xs">*</span><span
+                                                    class="text-green-600 text-xs px-2">(Whatsapp number for
+                                                    updates)</span></label>
+                                            <input type="number"
+                                                class="form-control change w-full px-3 py-2 border border-gray-300 rounded"
+                                                name="mobile_number" placeholder="Enter Mobile Number" maxlength="10"
+                                                minlength="10" required autocomplete="off" id="number"
+                                                onkeydown="if(this.value.length==10 && event.keyCode!=8) return false;">
+                                            <span id="number_error" class="text-red-500 text-xs"></span>
+
+                                        </div>
+                                    </div>
+                                    <div class="w-full">
+                                        <div>
+                                            <label class="block text-gray-700 text-sm font-bold mb-2">DOB<span
+                                                    class="text-red-500 text-xs">*</span> <span
+                                                    class="text-red-600 text-xs">(16+ Age Compulsory)</span></label>
+                                            <input type="date"
+                                                class="form-control change w-full px-3 py-2 border border-gray-300 rounded"
+                                                placeholder="Enter Date of Birth" onchange="validateAge(this)"
+                                                id="date1">
+                                            <span id="dob_error" class="text-red-500 text-xs"></span>
+                                            <input type="hidden" class="result" id="checkdobs">
+                                            <span id="checkdobs_error" class="text-red-500 text-xs"></span>
+
+                                        </div>
+                                    </div>
+                                    <div class="w-full">
+                                        <div>
+                                            <label class="block text-gray-700 text-sm font-bold mb-2">Gender<span
+                                                    class="text-red-500 text-xs">*</span></label>
+                                            <select
+                                                class="form-control change w-full px-3 py-2 border border-gray-300 rounded"
+                                                id="gender">
+                                                <option value="">Select Gender</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                            <span id="gender_error" class="text-red-500 text-xs"> </span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="w-full px-3 mt-5">
+                                    <div class="mb-4 text-center">
+                                        <button onclick="step2()" type="button"
+                                            class="btn btn-outline-primary bg-red-600 text-white font-bold py-2 px-4 rounded">NEXT</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div id="step2" class="step w-full" style="display: none;">
+                            <div class="flex flex-wrap justify-center items-center">
+                                <div class="flex flex-col justify-center items-center">
+                                    <div class="w-full md:w-1/2 px-3">
+                                        <div class="mb-4">
+                                            <label for="inputState"
+                                                class="block text-gray-700 text-sm font-bold mb-2">State</label>
+                                            <select
+                                                class="form-control change w-full px-3 py-2 border border-gray-300 rounded"
+                                                id="inputState">
+                                                <option value="SelectState">Select State</option>
+                                                <option value="Andra Pradesh">Andra Pradesh</option>
+                                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                                <option value="Assam">Assam</option>
+                                                <option value="Bihar">Bihar</option>
+                                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                                <option value="Goa">Goa</option>
+                                                <option value="Gujarat">Gujarat</option>
+                                                <option value="Haryana">Haryana</option>
+                                                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                                <option value="Jharkhand">Jharkhand</option>
+                                                <option value="Karnataka">Karnataka</option>
+                                                <option value="Kerala">Kerala</option>
+                                                <option value="Madya Pradesh">Madya Pradesh</option>
+                                                <option value="Maharashtra">Maharashtra</option>
+                                                <option value="Manipur">Manipur</option>
+                                                <option value="Meghalaya">Meghalaya</option>
+                                                <option value="Mizoram">Mizoram</option>
+                                                <option value="Nagaland">Nagaland</option>
+                                                <option value="Orissa">Orissa</option>
+                                                <option value="Punjab">Punjab</option>
+                                                <option value="Rajasthan">Rajasthan</option>
+                                                <option value="Sikkim">Sikkim</option>
+                                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                                <option value="Telangana">Telangana</option>
+                                                <option value="Tripura">Tripura</option>
+                                                <option value="Uttaranchal">Uttaranchal</option>
+                                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                                <option value="West Bengal">West Bengal</option>
+                                                <option disabled style="background-color:#aaa; color:#fff">UNION
+                                                    Territories
+                                                </option>
+                                                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands
+                                                </option>
+                                                <option value="Chandigarh">Chandigarh</option>
+                                                <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                                                <option value="Daman and Diu">Daman and Diu</option>
+                                                <option value="Delhi">Delhi</option>
+                                                <option value="Lakshadeep">Lakshadeep</option>
+                                                <option value="Pondicherry">Pondicherry</option>
+                                            </select>
+                                            <span id="state_error" class="text-red-500 text-xs"
+                                                style="display: none;">** Please
+                                                Enter a
+                                                State</span>
+                                        </div>
+                                    </div>
+                                    <div class="w-full md:w-1/2 px-3">
+                                        <div class="mb-4">
+                                            <label for="exampleInputEmail1"
+                                                class="block text-gray-700 text-sm font-bold mb-2">District / City <span
+                                                    style="color:red;">*</span></label>
+                                            <select
+                                                class="form-control change w-full px-3 py-2 border border-gray-300 rounded"
+                                                id="inputDistrict">
+                                                <option value="">-- select one -- </option>
+                                            </select>
+                                            <span id="city_error" class="text-red-500 text-xs" style="display: none;">**
+                                                Please
+                                                Enter
+                                                a
+                                                City</span>
+                                        </div>
+                                    </div>
+                                    <div class="w-full md:w-1/2 px-3 col-md-offset-2">
+                                        <div class="mb-4">
+                                            <label for="exampleInputEmail1"
+                                                class="block text-gray-700 text-sm font-bold mb-2">Pin Code <span
+                                                    style="color:red;">*</span> <span id="pincodes"
+                                                    class="text-red-500 text-xs" style="color:red;"></span></label>
+                                            <input type="text"
+                                                class="form-control change w-full px-3 py-2 border border-gray-300 rounded"
+                                                name="pincode" onkeypress="return isNumber(event)" maxlength="6"
+                                                minlength="6" placeholder="Enter Pin Code" required=""
+                                                autocomplete="off" id="pincode">
+                                            <span id="pincode_error" class="text-red-500 text-xs"
+                                                style="display: none;">**
+                                                Please
+                                                Enter
+                                                a Pincode</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="flex flex-col justify-center items-center">
+                                    <div class="w-full md:w-1/2 px-3">
+                                        <div class="mb-4">
+                                            <label for="exampleInputEmail1"
+                                                class="block text-gray-700 text-sm font-bold mb-2">Blood Group <span
+                                                    style="color:red;">*</span></label>
+                                            <select id="blood_group"
+                                                class="form-control change w-full px-3 py-2 border border-gray-300 rounded">
+                                                <option value="">Select Blood Group</option>
+                                                <option value="A+">A+</option>
+                                                <!-- other options -->
+                                            </select>
+                                            <span id="blood_error" class="text-red-500 text-xs"
+                                                style="display: none;">** Please
+                                                Enter a
+                                                Blood Group</span>
+                                        </div>
+                                    </div>
+                                    <div class="w-full md:w-1/2 px-3 col-md-offset-2">
+                                        <div class="mb-4">
+                                            <label for="exampleInputEmail1"
+                                                class="block text-gray-700 text-sm font-bold mb-2">Marathon Catagory
+                                                (KM)
+                                                <span style="color:red;">*</span></label>
+                                            <select name="marathon_km" id="km"
+                                                class="form-control change w-full px-3 py-2 border border-gray-300 rounded">
+                                                <option value="">Select Marathon Catagory (KM)</option>
+                                                <option value="5">5KM</option>
+                                                <option value="5">15KM</option>
+                                                <option value="5">25KM</option>
+                                                <!-- other options -->
+                                            </select>
+                                            <span id="km_error" class="text-red-500 text-xs" style="display: none;">**
+                                                Please
+                                                Enter a
+                                                Kilometre</span>
+                                        </div>
+                                    </div>
+                                    <div class="w-full md:w-1/2 px-3">
+                                        <div class="mb-4">
+                                            <label for="exampleInputEmail1"
+                                                class="block text-gray-700 text-sm font-bold mb-2">Select Occupation
+                                                <span style="color:red;">*</span></label>
+                                            <select id="occupation"
+                                                class="form-control change w-full px-3 py-2 border border-gray-300 rounded">
+                                                <option value="">Select Occupation</option>
+                                                <option value="student">Student</option>
+                                                <!-- other options -->
+                                            </select>
+                                            <span id="occupation_error" class="text-red-500 text-xs"
+                                                style="display: none;">**
+                                                Please
+                                                Enter a Occupation</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+                                <div class="w-full md:w-1/2 px-3 col-md-offset-2">
+                                    <div class="mb-4">
+                                        <button onclick="step1()" type="button" class="btn btn-outline-primary"
+                                            style="color:#ffff;background-color:#c9302c;font-size:15px;">BACK</button>
+                                        <button onclick="step3()" type="button" class="btn btn-secondary"
+                                            style="color:#ffff;background-color:#c9302c;font-size:15px;">NEXT</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- step 3 -->
+                        <div id="theform" style="display: none;">
+                            <div class="mx-3">
+                                <div class="grid md:grid-cols-2 gap-3 items-center">
+                                    <div class="w-full">
+                                        <div>
+                                            <label for="exampleInputEmail1">Emergency Contact Number <span
+                                                    style="color:red;">*</span><span id="num"
+                                                    style="color:red"></span></label>
+                                            <input type="text" class="form-control change" name="contact_number"
+                                                onkeypress="return isNumber(event)" maxlength="10" minlength="10"
+                                                placeholder="Emergency Contact Number" required="" autocomplete="off"
+                                                id="contact">
+                                            <span id="contact1_error" class="text-danger"></span>
+                                            <span style="color: red; font-size: 10px;" id="sameDispaly"> </span>
+
+                                        </div>
+                                    </div>
+                                    <div class="w-full">
+                                        <div>
+
+                                            <label for="exampleInputEmail1">School/College/Company Name <span
+                                                    style="color:red;">*</span></label>
+
+                                            <input type="text" class="form-control" id="school">
+
+                                            <span id="school1_error" class="text-danger"></span>
+
+                                        </div>
+                                    </div>
+                                    <div class="w-full">
+                                        <div>
+
+                                            <label for="exampleInputEmail1">Address <span
+                                                    style="color:red;">*</span></label>
+                                            <textarea class="form-control change" name="address" rows="3"
+                                                placeholder="Address" required="" id="address"></textarea>
+
+                                            <span id="address1_error" class="text-danger"></span>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="w-full">
+                                        <div>
+
+                                            <label for="exampleInputEmail1">Select T-shirt Size<span
+                                                    style="color:red;">*</span></label>
+
+                                            <select class="form-control" id="size">
+                                                <option value="">Select T-shirt Size </option>
+                                                <option value="S">S (38)</option>
+                                                <option value="M">M (40)</option>
+                                                <option value="L">L (42)</option>
+                                                <option value="XL">XL (44)</option>
+                                                <option value="XXL">XXL (46)</option>
+                                            </select>
+                                            <span id="tshirtss_error" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="w-full">
+                                        <div>
+
+                                            <input type="checkbox" class="form-check-input" id="self"
+                                                style="background-color:#ffffff36;border-color:#ffffff36 ;" name="self"
+                                                value="self">
+                                            <label class="form-check-label" for="exampleCheck1">Self Fitness
+                                                Declaration</label>
+                                            <span id="self1_error" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="w-full">
+                                        <div>
+
+                                            <input type="checkbox"> I agree to terms &amp; condition(<a
+                                                href="term-and-condition.php" target="_blank">Click Here</a>)
+                                        </div>
+                                    </div>
+                                    <div class="w-full">
+                                        <div>
+                                            <span class="g-recaptcha"
+                                                data-sitekey="6Lel4Z4UAAAAAOa8LO1Q9mqKRUiMYl_00o5mXJrR"
+                                                style="margin-left:100px;">
+                                                <div style="width: 304px; height: 78px;">
+                                                    <div><iframe title="reCAPTCHA" width="304" height="78"
+                                                            role="presentation" name="a-8xnqj43qw8gf" frameborder="0"
+                                                            scrolling="no"
+                                                            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation"
+                                                            src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6Lel4Z4UAAAAAOa8LO1Q9mqKRUiMYl_00o5mXJrR&amp;co=aHR0cHM6Ly93d3cuY2hoaW5kd2FyYW1hcmF0aG9uLmNvbTo0NDM.&amp;hl=en&amp;v=-80zvSY9h4i8O-ocN2P5qTJk&amp;size=normal&amp;cb=w2xbasnlh0bz"></iframe>
+                                                    </div><textarea id="g-recaptcha-response"
+                                                        name="g-recaptcha-response" class="g-recaptcha-response"
+                                                        style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
+                                                </div><iframe style="display: none;"></iframe>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="w-full px-3 mt-5">
+                                        <div class="mb-4 text-center">
+                                            <button type="button" class="btn btn-primary text-center"
+                                            onclick="abhishek()">Submit</button>
+            
+                                        <button onclick="step2()" type="button" class="btn btn-outline-primary"
+                                            style="color:#ffff;background-color:#c9302c;font-size:15px;">BACK</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                <!-- Add more steps as needed -->
+                </form>
+
+            </div>
+            <div class="flex absolute right-[87px] top-14 animate-skw">
+                <img src="images/shap.png" alt="shap-2" class="w-7.5 h-12.5 relative top-9">
+                <img src="images/shap.png" alt="shap-1">
+                <img src="images/shap.png" alt="shap-2" class="w-5 h-8 -mt-7">
+            </div>
+        </div>
+        </div>
+        <!-- circle shap -->
+        <div class="lg:block hidden">
+            <div class="absolute left-0 top-[60px] animate-left-right-2">
+                <img src="images/left-circle-1.png" alt="img">
+            </div>
+            <div class="absolute left-[37px] top-[186px] animate-left-right-2">
+                <img src="images/left-circle-2.png" alt="img">
+            </div>
+            <div class="absolute right-0 bottom-[165px] animate-up-down">
+                <img src="images/right-circle.png" alt="img">
+            </div>
+        </div>
+        <!-- circle shap -->
+    </section>
+
+    <!-- footer -->
+    <footer class="pt-[70px] relative">
+        <div class="container">
+            <div class="grid lg:grid-cols-[370px_auto_auto] sm:grid-cols-2 grid-cols-1 justify-between gap-7.5">
+                <!-- compnay info start -->
+                <div class="wow fadeInUp" data-wow-delay=".3s">
+                    <a href="" class="flex items-center gap-1">
+                        <img src="images/chhindwara.png" alt="img">
+                        <span class="font-bold text-3xl px-2">chhindwara Marathon</span>
+                    </a>
+                    <p class="pt-4">Indeed, the marathon brings together a diverse array of notable corporations and
+                        businesses from around the world</p>
+                    <ul class="flex items-center gap-5 pt-7.5">
+                        <li><a href="https://www.facebook.com/ChhindwaraMarathon"
+                                class="rounded-md w-9 h-9 flex items-center justify-center bg-warm hover:text-cream-foreground hover:bg-green transition-all duration-500"><i
+                                    class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.instagram.com/chhindwaramarathon/"
+                                class="rounded-md w-9 h-9 flex items-center justify-center bg-warm hover:text-cream-foreground hover:bg-green transition-all duration-500"><i
+                                    class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="https://x.com/ChhindwaraRun?mx=2"
+                                class="rounded-md w-9 h-9 flex items-center justify-center bg-warm hover:text-cream-foreground hover:bg-green transition-all duration-500"><i
+                                    class="fa-brands fa-x-twitter"></i></a></li>
+                    </ul>
+                </div>
+                <!-- compnay info end -->
+                <!-- pages link start -->
+                <div class="wow fadeInUp" data-wow-delay=".5s">
+                    <h3 class="text-2xl font-semibold">Pages</h3>
+                    <ul class="flex flex-col gap-[15px] pt-5">
+                        <li><a href=""
+                                class="text-[#686868] transition-all duration-500 hover:ml-1 hover:text-primary-foreground">About
+                                Us</a></li>
+                        <li><a href=""
+                                class="text-[#686868] transition-all duration-500 hover:ml-1 hover:text-primary-foreground">Latest
+                                Service</a></li>
+                        <li><a href=""
+                                class="text-[#686868] transition-all duration-500 hover:ml-1 hover:text-primary-foreground">Latest
+                                Blog And News</a></li>
+                        <li><a href=""
+                                class="text-[#686868] transition-all duration-500 hover:ml-1 hover:text-primary-foreground">FAQ</a>
+                        </li>
+                        <li><a href=""
+                                class="text-[#686868] transition-all duration-500 hover:ml-1 hover:text-primary-foreground">Our
+                                Creative Team Member</a></li>
+                    </ul>
+                </div>
+                <!-- pages link end -->
+                <!-- contact link start -->
+                <div class=" wow fadeInUp" data-wow-delay=".5s">
+                    <h3 class="text-2xl font-semibold">Contact</h3>
+                    <ul class="flex flex-col gap-[15px] pt-5">
+                        <li>
+                            <p class="text-[#686868] flex items-center gap-4">
+                                <span
+                                    class="w-11 h-11 rounded-full border border-gray-200 flex justify-center items-center text-green-foreground"><i
+                                        class="fa-solid fa-location-dot"></i></span> <span class="max-w-[168px]">DATCC-
+                                    Office of The Collector, Chhindwara-480001, Madhya Pradesh</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="text-[#686868] flex items-center gap-4">
+                                <span
+                                    class="w-11 h-11 rounded-full border border-gray-200 flex justify-center items-center text-green-foreground"><i
+                                        class="fa-solid fa-envelope"></i></span> <a
+                                    href="">chhindwaramarathon@gmail.com</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="text-[#686868] flex items-center gap-4">
+                                <span
+                                    class="w-11 h-11 rounded-full border border-gray-200 flex justify-center items-center text-green-foreground"><i
+                                        class="fa-solid fa-phone"></i></span> <a href="">+919993380898</a>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <!-- contact link end -->
+            </div>
+            <div class="pt-[75px] overflow-x-hidden">
+                <div
+                    class="flex lg:flex-row flex-col justify-between lg:items-center pt-7.5 pb-8 border-t border-t-white border-opacity-20">
+                    <p class="wow fadeInLeft" data-wow-delay=".3s">© <a href="">Uma Adventure</a> 2022 | All Rights
+                        Reserved</p>
+                    <ul class="flex items-center gap-7.5 wow fadeInRight" data-wow-delay=".3s">
+                        <li><a href="">Trams &amp; Condition</a></li>
+                        <li><a href="">Privacy Policy</a></li>
+                        <li><a href="">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="scroll-up"
+            class="absolute bottom-20 xl:left-[90%] left-1/2 -translate-x-1/2 w-12.5 h-12.5 rounded-full bg-primary text-cream-foreground flex justify-center items-center border-[3px] border-white cursor-pointer">
+            <i class="fa-solid fa-arrow-up"></i>
+        </div>
+    </footer>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+    <script>
+        var AndraPradesh = ["Anantapur", "Chittoor", "East Godavari", "Guntur", "Kadapa", "Krishna", "Kurnool", "Prakasam", "Nellore", "Srikakulam", "Visakhapatnam", "Vizianagaram", "West Godavari"];
+        var ArunachalPradesh = ["Anjaw", "Changlang", "Dibang Valley", "East Kameng", "East Siang", "Kra Daadi", "Kurung Kumey", "Lohit", "Longding", "Lower Dibang Valley", "Lower Subansiri", "Namsai", "Papum Pare", "Siang", "Tawang", "Tirap", "Upper Siang", "Upper Subansiri", "West Kameng", "West Siang", "Itanagar"];
+        var Assam = ["Baksa", "Barpeta", "Biswanath", "Bongaigaon", "Cachar", "Charaideo", "Chirang", "Darrang", "Dhemaji", "Dhubri", "Dibrugarh", "Goalpara", "Golaghat", "Hailakandi", "Hojai", "Jorhat", "Kamrup Metropolitan", "Kamrup (Rural)", "Karbi Anglong", "Karimganj", "Kokrajhar", "Lakhimpur", "Majuli", "Morigaon", "Nagaon", "Nalbari", "Dima Hasao", "Sivasagar", "Sonitpur", "South Salmara Mankachar", "Tinsukia", "Udalguri", "West Karbi Anglong"];
+        var Bihar = ["Araria", "Arwal", "Aurangabad", "Banka", "Begusarai", "Bhagalpur", "Bhojpur", "Buxar", "Darbhanga", "East Champaran", "Gaya", "Gopalganj", "Jamui", "Jehanabad", "Kaimur", "Katihar", "Khagaria", "Kishanganj", "Lakhisarai", "Madhepura", "Madhubani", "Munger", "Muzaffarpur", "Nalanda", "Nawada", "Patna", "Purnia", "Rohtas", "Saharsa", "Samastipur", "Saran", "Sheikhpura", "Sheohar", "Sitamarhi", "Siwan", "Supaul", "Vaishali", "West Champaran"];
+        var Chhattisgarh = ["Balod", "Baloda Bazar", "Balrampur", "Bastar", "Bemetara", "Bijapur", "Bilaspur", "Dantewada", "Dhamtari", "Durg", "Gariaband", "Janjgir Champa", "Jashpur", "Kabirdham", "Kanker", "Kondagaon", "Korba", "Koriya", "Mahasamund", "Mungeli", "Narayanpur", "Raigarh", "Raipur", "Rajnandgaon", "Sukma", "Surajpur", "Surguja"];
+        var Goa = ["North Goa", "South Goa"];
+        var Gujarat = ["Ahmedabad", "Amreli", "Anand", "Aravalli", "Banaskantha", "Bharuch", "Bhavnagar", "Botad", "Chhota Udaipur", "Dahod", "Dang", "Devbhoomi Dwarka", "Gandhinagar", "Gir Somnath", "Jamnagar", "Junagadh", "Kheda", "Kutch", "Mahisagar", "Mehsana", "Morbi", "Narmada", "Navsari", "Panchmahal", "Patan", "Porbandar", "Rajkot", "Sabarkantha", "Surat", "Surendranagar", "Tapi", "Vadodara", "Valsad"];
+        var Haryana = ["Ambala", "Bhiwani", "Charkhi Dadri", "Faridabad", "Fatehabad", "Gurugram", "Hisar", "Jhajjar", "Jind", "Kaithal", "Karnal", "Kurukshetra", "Mahendragarh", "Mewat", "Palwal", "Panchkula", "Panipat", "Rewari", "Rohtak", "Sirsa", "Sonipat", "Yamunanagar"];
+        var HimachalPradesh = ["Bilaspur", "Chamba", "Hamirpur", "Kangra", "Kinnaur", "Kullu", "Lahaul Spiti", "Mandi", "Shimla", "Sirmaur", "Solan", "Una"];
+        var JammuKashmir = ["Anantnag", "Bandipora", "Baramulla", "Budgam", "Doda", "Ganderbal", "Jammu", "Kargil", "Kathua", "Kishtwar", "Kulgam", "Kupwara", "Leh", "Poonch", "Pulwama", "Rajouri", "Ramban", "Reasi", "Samba", "Shopian", "Srinagar", "Udhampur"];
+        var Jharkhand = ["Bokaro", "Chatra", "Deoghar", "Dhanbad", "Dumka", "East Singhbhum", "Garhwa", "Giridih", "Godda", "Gumla", "Hazaribagh", "Jamtara", "Khunti", "Koderma", "Latehar", "Lohardaga", "Pakur", "Palamu", "Ramgarh", "Ranchi", "Sahebganj", "Seraikela Kharsawan", "Simdega", "West Singhbhum"];
+        var Karnataka = ["Bagalkot", "Bangalore Rural", "Bangalore Urban", "Belgaum", "Bellary", "Bidar", "Vijayapura", "Chamarajanagar", "Chikkaballapur", "Chikkamagaluru", "Chitradurga", "Dakshina Kannada", "Davanagere", "Dharwad", "Gadag", "Gulbarga", "Hassan", "Haveri", "Kodagu", "Kolar", "Koppal", "Mandya", "Mysore", "Raichur", "Ramanagara", "Shimoga", "Tumkur", "Udupi", "Uttara Kannada", "Yadgir"];
+        var Kerala = ["Alappuzha", "Ernakulam", "Idukki", "Kannur", "Kasaragod", "Kollam", "Kottayam", "Kozhikode", "Malappuram", "Palakkad", "Pathanamthitta", "Thiruvananthapuram", "Thrissur", "Wayanad"];
+        var MadhyaPradesh = ["Agar Malwa", "Alirajpur", "Anuppur", "Ashoknagar", "Balaghat", "Barwani", "Betul", "Bhind", "Bhopal", "Burhanpur", "Chhatarpur", "Chhindwara", "Damoh", "Datia", "Dewas", "Dhar", "Dindori", "Guna", "Gwalior", "Harda", "Hoshangabad", "Indore", "Jabalpur", "Jhabua", "Katni", "Khandwa", "Khargone", "Mandla", "Mandsaur", "Morena", "Narsinghpur", "Neemuch", "Panna", "Raisen", "Rajgarh", "Ratlam", "Rewa", "Sagar", "Satna",
+            "Sehore", "Seoni", "Shahdol", "Shajapur", "Sheopur", "Shivpuri", "Sidhi", "Singrauli", "Tikamgarh", "Ujjain", "Umaria", "Vidisha"];
+        var Maharashtra = ["Ahmednagar", "Akola", "Amravati", "Aurangabad", "Beed", "Bhandara", "Buldhana", "Chandrapur", "Dhule", "Gadchiroli", "Gondia", "Hingoli", "Jalgaon", "Jalna", "Kolhapur", "Latur", "Mumbai City", "Mumbai Suburban", "Nagpur", "Nanded", "Nandurbar", "Nashik", "Osmanabad", "Palghar", "Parbhani", "Pune", "Raigad", "Ratnagiri", "Sangli", "Satara", "Sindhudurg", "Solapur", "Thane", "Wardha", "Washim", "Yavatmal"];
+        var Manipur = ["Bishnupur", "Chandel", "Churachandpur", "Imphal East", "Imphal West", "Jiribam", "Kakching", "Kamjong", "Kangpokpi", "Noney", "Pherzawl", "Senapati", "Tamenglong", "Tengnoupal", "Thoubal", "Ukhrul"];
+        var Meghalaya = ["East Garo Hills", "East Jaintia Hills", "East Khasi Hills", "North Garo Hills", "Ri Bhoi", "South Garo Hills", "South West Garo Hills", "South West Khasi Hills", "West Garo Hills", "West Jaintia Hills", "West Khasi Hills"];
+        var Mizoram = ["Aizawl", "Champhai", "Kolasib", "Lawngtlai", "Lunglei", "Mamit", "Saiha", "Serchhip", "Aizawl", "Champhai", "Kolasib", "Lawngtlai", "Lunglei", "Mamit", "Saiha", "Serchhip"];
+        var Nagaland = ["Dimapur", "Kiphire", "Kohima", "Longleng", "Mokokchung", "Mon", "Peren", "Phek", "Tuensang", "Wokha", "Zunheboto"];
+        var Odisha = ["Angul", "Balangir", "Balasore", "Bargarh", "Bhadrak", "Boudh", "Cuttack", "Debagarh", "Dhenkanal", "Gajapati", "Ganjam", "Jagatsinghpur", "Jajpur", "Jharsuguda", "Kalahandi", "Kandhamal", "Kendrapara", "Kendujhar", "Khordha", "Koraput", "Malkangiri", "Mayurbhanj", "Nabarangpur", "Nayagarh", "Nuapada", "Puri", "Rayagada", "Sambalpur", "Subarnapur", "Sundergarh"];
+        var Punjab = ["Amritsar", "Barnala", "Bathinda", "Faridkot", "Fatehgarh Sahib", "Fazilka", "Firozpur", "Gurdaspur", "Hoshiarpur", "Jalandhar", "Kapurthala", "Ludhiana", "Mansa", "Moga", "Mohali", "Muktsar", "Pathankot", "Patiala", "Rupnagar", "Sangrur", "Shaheed Bhagat Singh Nagar", "Tarn Taran"];
+        var Rajasthan = ["Ajmer", "Alwar", "Banswara", "Baran", "Barmer", "Bharatpur", "Bhilwara", "Bikaner", "Bundi", "Chittorgarh", "Churu", "Dausa", "Dholpur", "Dungarpur", "Ganganagar", "Hanumangarh", "Jaipur", "Jaisalmer", "Jalore", "Jhalawar", "Jhunjhunu", "Jodhpur", "Karauli", "Kota", "Nagaur", "Pali", "Pratapgarh", "Rajsamand", "Sawai Madhopur", "Sikar", "Sirohi", "Tonk", "Udaipur"];
+        var Sikkim = ["East Sikkim", "North Sikkim", "South Sikkim", "West Sikkim"];
+        var TamilNadu = ["Ariyalur", "Chennai", "Coimbatore", "Cuddalore", "Dharmapuri", "Dindigul", "Erode", "Kanchipuram", "Kanyakumari", "Karur", "Krishnagiri", "Madurai", "Nagapattinam", "Namakkal", "Nilgiris", "Perambalur", "Pudukkottai", "Ramanathapuram", "Salem", "Sivaganga", "Thanjavur", "Theni", "Thoothukudi", "Tiruchirappalli", "Tirunelveli", "Tiruppur", "Tiruvallur", "Tiruvannamalai", "Tiruvarur", "Vellore", "Viluppuram", "Virudhunagar"];
+        var Telangana = ["Adilabad", "Bhadradri Kothagudem", "Hyderabad", "Jagtial", "Jangaon", "Jayashankar", "Jogulamba", "Kamareddy", "Karimnagar", "Khammam", "Komaram Bheem", "Mahabubabad", "Mahbubnagar", "Mancherial", "Medak", "Medchal", "Nagarkurnool", "Nalgonda", "Nirmal", "Nizamabad", "Peddapalli", "Rajanna Sircilla", "Ranga Reddy", "Sangareddy", "Siddipet", "Suryapet", "Vikarabad", "Wanaparthy", "Warangal Rural", "Warangal Urban", "Yadadri Bhuvanagiri"];
+        var Tripura = ["Dhalai", "Gomati", "Khowai", "North Tripura", "Sepahijala", "South Tripura", "Unakoti", "West Tripura"];
+        var UttarPradesh = ["Agra", "Aligarh", "Allahabad", "Ambedkar Nagar", "Amethi", "Amroha", "Auraiya", "Azamgarh", "Baghpat", "Bahraich", "Ballia", "Balrampur", "Banda", "Barabanki", "Bareilly", "Basti", "Bhadohi", "Bijnor", "Budaun", "Bulandshahr", "Chandauli", "Chitrakoot", "Deoria", "Etah", "Etawah", "Faizabad", "Farrukhabad", "Fatehpur", "Firozabad", "Gautam Buddha Nagar", "Ghaziabad", "Ghazipur", "Gonda", "Gorakhpur", "Hamirpur", "Hapur", "Hardoi", "Hathras", "Jalaun", "Jaunpur", "Jhansi", "Kannauj", "Kanpur Dehat", "Kanpur Nagar", "Kasganj", "Kaushambi", "Kheri", "Kushinagar", "Lalitpur", "Lucknow", "Maharajganj", "Mahoba", "Mainpuri", "Mathura", "Mau", "Meerut", "Mirzapur", "Moradabad", "Muzaffarnagar", "Pilibhit", "Pratapgarh", "Raebareli", "Rampur", "Saharanpur", "Sambhal", "Sant Kabir Nagar", "Shahjahanpur", "Shamli", "Shravasti", "Siddharthnagar", "Sitapur", "Sonbhadra", "Sultanpur", "Unnao", "Varanasi"];
+        var Uttarakhand = ["Almora", "Bageshwar", "Chamoli", "Champawat", "Dehradun", "Haridwar", "Nainital", "Pauri", "Pithoragarh", "Rudraprayag", "Tehri", "Udham Singh Nagar", "Uttarkashi"];
+        var WestBengal = ["Alipurduar", "Bankura", "Birbhum", "Cooch Behar", "Dakshin Dinajpur", "Darjeeling", "Hooghly", "Howrah", "Jalpaiguri", "Jhargram", "Kalimpong", "Kolkata", "Malda", "Murshidabad", "Nadia", "North 24 Parganas", "Paschim Bardhaman", "Paschim Medinipur", "Purba Bardhaman", "Purba Medinipur", "Purulia", "South 24 Parganas", "Uttar Dinajpur"];
+        var AndamanNicobar = ["Nicobar", "North Middle Andaman", "South Andaman"];
+        var Chandigarh = ["Chandigarh"];
+        var DadraHaveli = ["Dadra Nagar Haveli"];
+        var DamanDiu = ["Daman", "Diu"];
+        var Delhi = ["Central Delhi", "East Delhi", "New Delhi", "North Delhi", "North East Delhi", "North West Delhi", "Shahdara", "South Delhi", "South East Delhi", "South West Delhi", "West Delhi"];
+        var Lakshadweep = ["Lakshadweep"];
+        var Puducherry = ["Karaikal", "Mahe", "Puducherry", "Yanam"];
+
+
+        $("#inputState").change(function () {
+            var StateSelected = $(this).val();
+            var optionsList;
+            var htmlString = "";
+
+            switch (StateSelected) {
+                case "Andra Pradesh":
+                    optionsList = AndraPradesh;
+                    break;
+                case "Arunachal Pradesh":
+                    optionsList = ArunachalPradesh;
+                    break;
+                case "Assam":
+                    optionsList = Assam;
+                    break;
+                case "Bihar":
+                    optionsList = Bihar;
+                    break;
+                case "Chhattisgarh":
+                    optionsList = Chhattisgarh;
+                    break;
+                case "Goa":
+                    optionsList = Goa;
+                    break;
+                case "Gujarat":
+                    optionsList = Gujarat;
+                    break;
+                case "Haryana":
+                    optionsList = Haryana;
+                    break;
+                case "Himachal Pradesh":
+                    optionsList = HimachalPradesh;
+                    break;
+                case "Jammu and Kashmir":
+                    optionsList = JammuKashmir;
+                    break;
+                case "Jharkhand":
+                    optionsList = Jharkhand;
+                    break;
+                case "Karnataka":
+                    optionsList = Karnataka;
+                    break;
+                case "Kerala":
+                    optionsList = Kerala;
+                    break;
+                case "Madya Pradesh":
+                    optionsList = MadhyaPradesh;
+                    break;
+                case "Maharashtra":
+                    optionsList = Maharashtra;
+                    break;
+                case "Manipur":
+                    optionsList = Manipur;
+                    break;
+                case "Meghalaya":
+                    optionsList = Meghalaya;
+                    break;
+                case "Mizoram":
+                    optionsList = Mizoram;
+                    break;
+                case "Nagaland":
+                    optionsList = Nagaland;
+                    break;
+                case "Orissa":
+                    optionsList = Orissa;
+                    break;
+                case "Punjab":
+                    optionsList = Punjab;
+                    break;
+                case "Rajasthan":
+                    optionsList = Rajasthan;
+                    break;
+                case "Sikkim":
+                    optionsList = Sikkim;
+                    break;
+                case "Tamil Nadu":
+                    optionsList = TamilNadu;
+                    break;
+                case "Telangana":
+                    optionsList = Telangana;
+                    break;
+                case "Tripura":
+                    optionsList = Tripura;
+                    break;
+                case "Uttaranchal":
+                    optionsList = Uttaranchal;
+                    break;
+                case "Uttar Pradesh":
+                    optionsList = UttarPradesh;
+                    break;
+                case "West Bengal":
+                    optionsList = WestBengal;
+                    break;
+                case "Andaman and Nicobar Islands":
+                    optionsList = AndamanNicobar;
+                    break;
+                case "Chandigarh":
+                    optionsList = Chandigarh;
+                    break;
+                case "Dadar and Nagar Haveli":
+                    optionsList = DadraHaveli;
+                    break;
+                case "Daman and Diu":
+                    optionsList = DamanDiu;
+                    break;
+                case "Delhi":
+                    optionsList = Delhi;
+                    break;
+                case "Lakshadeep":
+                    optionsList = Lakshadeep;
+                    break;
+                case "Pondicherry":
+                    optionsList = Pondicherry;
+                    break;
+            }
+
+
+            for (var i = 0; i < optionsList.length; i++) {
+                htmlString = htmlString + "<option value='" + optionsList[i] + "'>" + optionsList[i] + "</option>";
+            }
+            $("#inputDistrict").html(htmlString);
+
+        });
+    </script>
+
+</body>
+
+</html>
