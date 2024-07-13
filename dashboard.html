@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chhindwara Marathon 2024</title>
+    <link rel="shortcut icon" href="images/chhindwara.png" type="image/x-icon">
+
+    <!-- fontawesome -->
+    <script src="js/1cbbb02fe6.js" crossorigin="anonymous"></script>
+    <!-- svg icons -->
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- swiper css -->
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <!-- animate css -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- main css -->
+    <link rel="stylesheet" href="css/output.css">
+
+
+</head>
+
+<body>
+    <header id="header" class="sticky top-0 transition-[top] duration-300 z-40">
+        <div id="header-container">
+            <!-- bottom header -->
+            <div class="[.header-pinned_&amp;]:shadow-md bg-background transition-all duration-300">
+                <div class="container py-1">
+                    <div class="flex justify-between items-center ">
+                        <div>
+                            <a href="index.html" class="flex items-center gap-1">
+                                <img src="images/chhindwara.png" alt="img" class="w-20">
+                            </a>
+                        </div>
+                        <div class="flex items-center">
+                            <!-- desktop navbanr start -->
+                            <nav class="xl:block hidden">
+                                <ul class="flex items-center gap-[25px]">
+                                    <li class="leading-[164%] relative py-5 group">
+                                        <a href="#"
+                                            class="font-semibold text-lg font-jost group-hover:text-primary-foreground transition-all duration-500 py-5">Home</a>
+                                    </li>
+                                    <li class="leading-[164%] relative group">
+                                        <a href="about.html"
+                                            class="font-semibold text-lg font-jost group-hover:text-primary-foreground transition-all duration-500">About
+                                            Us</a>
+                                    </li>
+                                    <li class="leading-[164%] relative py-5 group">
+                                        <a href="#"
+                                            class=" font-semibold text-lg font-jost group-hover:text-primary-foreground transition-all duration-500">Services</a>
+                                    </li>
+                                    <li class="leading-[164%] relative group">
+                                        <a href="contact.html"
+                                            class=" font-semibold text-lg font-jost group-hover:text-primary-foreground transition-all duration-500">Contact
+                                            Us</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <!-- desktop navbanr end -->
+
+                            <!-- tab and mobile navbanr start -->
+                            <div class="block xl:hidden">
+                                <div
+                                    class="fixed left-0 top-0 w-full h-full bg-black/30 invisible transition-all offcanva-overlay">
+                                </div>
+                                <nav
+                                    class="bg-warm border-l-2 border-l-primary w-full max-w-md min-h-screen h-full overflow-y-auto p-7 shadow-md fixed -right-full top-0 z-50 transition-all duration-500 offcanva">
+                                    <div class="flex justify-between items-center">
+                                        <a href="" class="flex items-center gap-1 justify-start">
+                                            <img src="images/chhindwara.png" alt="img" class="w-16">
+                                            <span class="font-bold text-2xl ">Chhidwara</span>
+                                            <span class="font-bold text-2xl ">Marathon</span>
+
+                                        </a>
+                                        <div
+                                            class="bg-primary w-10 h-10 text-cream-foreground flex items-center justify-center rounded-[4px] left-4 offcanvaClose">
+                                            <i class="fa-solid fa-xmark text-xl" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <ul class=" mt-6">
+                                        <li class="leading-[164%] relative w-full dropdown">
+                                            <a href="#"
+                                                class="font-jost py-2.5 border-b border-b-slate-300 text-[#385469] flex justify-between items-center">
+                                                <span>Home</span>
+                                            </a>
+                                        </li>
+                                        <li class="leading-[164%] relative w-full">
+                                            <a href="about.html"
+                                                class="font-jost py-2.5 border-b border-b-slate-300 text-[#385469] flex justify-between items-center">About
+                                                Us</a>
+                                        </li>
+                                        <li class="leading-[164%] relative w-full dropdown">
+                                            <a href="#"
+                                                class="font-jost py-2.5 border-b border-b-slate-300 text-[#385469] flex justify-between items-center">
+                                                <span>Services</span>
+                                            </a>
+                                        </li>
+
+
+                                        <li class="leading-[164%] relative w-full ">
+                                            <a href="contact.html"
+                                                class="text-[#385469] font-jost hover:text-secondary-foreground transition-all duration-500 py-2.5 block border-b border-b-slate-300">Contact
+                                                Us</a>
+                                        </li>
+                                        <li class="leading-[164%] relative w-full ">
+                                            <a href="contact.html"
+                                                class="text-[#385469] font-jost hover:text-secondary-foreground transition-all duration-500 py-2.5 block border-b border-b-slate-300">Logout</a>
+                                        </li>
+                                        
+                                    </ul>
+
+                                    <!-- contact info start -->
+                                    <div class="mt-5">
+                                        <div>
+                                            <h4 class="text-xl font-bold text-[#385469]">Contact Info</h4>
+                                            <ul class="mt-5 flex flex-col gap-[15px]">
+                                                <li>
+                                                    <p>
+                                                        <i class="fa-solid fa-phone text-primary-foreground"
+                                                            aria-hidden="true"></i> <a href=""
+                                                            class="ml-2.5">+919993380898</a>
+                                                    </p>
+                                                </li>
+                                                <li>
+                                                    <p>
+                                                        <i class="fa-solid fa-envelope text-primary-foreground"
+                                                            aria-hidden="true"></i> <a href=""
+                                                            class="ml-2.5">chhindwaramarathon@gmail.com</a>
+                                                    </p>
+                                                </li>
+                                                <li>
+                                                    <p>
+                                                        <i class="fa-solid fa-location-dot text-primary-foreground"
+                                                            aria-hidden="true"></i> <span class="ml-2.5">DATCC- Office
+                                                            of The Collector, Chhindwara-480001, Madhya Pradesh</span>
+                                                    </p>
+                                                </li>
+                                                <li>
+                                                    <p>
+                                                        <i class="fa-solid fa-location-dot text-primary-foreground"
+                                                            aria-hidden="true"></i> <span class="ml-2.5">Uma Adventure-
+                                                            H.No.35, Block Colony, Tamia, Dist. Chhindwara-480559,
+                                                            Madhya Pradesh</span>
+                                                    </p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="mt-5">
+                                            <a href="contact.html"
+                                                class="bg-primary text-cream-foreground rounded-md sm:flex hidden items-center gap-2.5  btn after:bg-green">Register
+                                            </a>
+                                        </div>
+                                        <ul class="flex items-center gap-[14px] mt-6">
+                                            <li><a href=""
+                                                    class="rounded-md w-11 h-11 flex items-center justify-center text-muted-foreground bg-background hover:bg-primary transition-all duration-500"><i
+                                                        class="fa-brands fa-facebook-f " aria-hidden="true"></i></a>
+                                            </li>
+                                            <li><a href=""
+                                                    class="rounded-md w-11 h-11 flex items-center justify-center text-muted-foreground bg-background hover:bg-primary transition-all duration-500"><i
+                                                        class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+                                            <li><a href=""
+                                                    class="rounded-md w-11 h-11 flex items-center justify-center text-muted-foreground bg-background hover:bg-primary transition-all duration-500"><i
+                                                        class="fa-brands fa-linkedin" aria-hidden="true"></i></a></li>
+                                            <li><a href=""
+                                                    class="rounded-md w-11 h-11 flex items-center justify-center text-muted-foreground bg-background hover:bg-primary transition-all duration-500"><i
+                                                        class="fa-brands fa-pinterest-p" aria-hidden="true"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- contact info end -->
+                                </nav>
+                            </div>
+                            <!-- tab and mobile navbanr end -->
+
+                            <!-- search, toggle and contact btn start -->
+                            <div class="flex items-center gap-6 ml-10 ">
+                                <!-- <p class="h-11 w-[1px] bg-muted xl:block hidden"></p> -->
+                                <a href="register.html"
+                                    class="bg-primary text-cream-foreground rounded-md sm:flex hidden items-center gap-2.5  btn after:bg-green">Logout
+                                </a>
+                                <div class="block xl:hidden">
+                                    <div
+                                        class="flex flex-col items-end cursor-pointer transition-all duration-500 offcanvaTragger">
+                                        <span class="block h-[3px] w-5 bg-muted"></span>
+                                        <span class="block h-[3px] w-7.5 bg-muted mt-2"></span>
+                                        <span class="block h-[3px] w-5 bg-muted mt-2"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- section is for testimonial -->
+                            <!-- search, toggle and contact btn end -->
+                            <form action="#"
+                                class="opacity-0 invisible transition-all duration-500 absolute left-0 bottom-0 w-full lg:h-[calc(100%-32%)] md:h-[calc(100%-50%)] h-[calc(100%-0%)] search-form ">
+                                <input type="text" name="search" id="search" placeholder="Search here"
+                                    class="w-full h-full border border-gray-400 px-10 rounded-md outline-none">
+                                <label for="search"
+                                    class="absolute right-10 top-1/2 -translate-y-1/2 cursor-pointer search-close">
+                                    <i class="fa-solid fa-xmark border-gray-400  text-xl" aria-hidden="true"></i>
+                                </label>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- bottom header -->
+        </div>
+    </header>
+    <!-- form -->
+    <section class="bg-warm banner-height pt-[78px] h-[850px] lg:mb-15 mb-10 relative">
+        <div class="container relative">
+            <div class="flex flex-col items-center relative z-10 py-10 w-2/3 mx-auto">
+                <div class="container mx-auto">
+                    <div class="mb-2  border bg-neutral-700 p-4 rounded-lg max-w-full">
+                        <div class="mx-auto">
+                            <div class="card md:flex max-w-lg">
+                                <div class="w-20 h-20 mx-auto mb-6 md:mr-6 flex-shrink-0">
+                                    <img class="object-cover rounded-full mx-2"
+                                        src="https://tailwindflex.com/public/images/user.png">
+                                </div>
+                                <div class="flex-grow text-start md:text-left px-4">
+                                    <h3 class="text-xl heading">John Doe</h3>
+                                    <h3 class="text-xl heading">John@gmail.com</h3>
+                                    <h3 class="mt-2 mb-3">mobile_number:8967584733</h3>
+                                    <div class="flex justify-center items-center">
+                                        <button class="btn btn-outline-primary border px-3 py-1.5 bg-blue-500 rounded-lg text-sm">View</button>
+                                        <button class="btn btn-outline-primary border px-3 py-1.5 bg-green-500 rounded-lg text-sm">Certificate</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-2  border bg-neutral-700 p-4 rounded-lg max-w-full">
+                        <div class="mx-auto">
+                            <div class="card md:flex max-w-lg">
+                                <div class="w-20 h-20 mx-auto mb-6 md:mr-6 flex-shrink-0">
+                                    <img class="object-cover rounded-full mx-2"
+                                        src="https://tailwindflex.com/public/images/user.png">
+                                </div>
+                                <div class="flex-grow text-start md:text-left px-4">
+                                    <p>......Upcoming Marathon(on 28 july 2024)</p>
+                                    <h3 class="text-xl heading">John Doe</h3>
+                                    <h3 class="text-xl heading">John@gmail.com</h3>
+                                    <h3 class="mt-2 mb-3">Mobile number: 8967584733</h3>
+                                    <div class="flex justify-center items-center">
+                                        <button class="btn btn-outline-primary border px-3 py-1.5 bg-blue-500 rounded-lg text-sm">Edit</button>
+                                        <button class="btn btn-outline-primary border px-3 py-1.5 bg-green-500 rounded-lg text-sm">participate</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                
+            </div>
+        </div>
+        <!-- circle shap -->
+        <div class="lg:block hidden">
+            <div class="absolute left-0 top-[60px] animate-left-right-2">
+                <img src="images/left-circle-1.png" alt="img">
+            </div>
+            <div class="absolute left-[37px] top-[186px] animate-left-right-2">
+                <img src="images/left-circle-2.png" alt="img">
+            </div>
+            <div class="absolute right-0 bottom-[165px] animate-up-down">
+                <img src="images/right-circle.png" alt="img">
+            </div>
+        </div>
+        <!-- circle shap -->
+    </section>
+
+    <!-- footer -->
+    <footer class="pt-[70px] relative">
+        <div class="container">
+            <div class="grid lg:grid-cols-[370px_auto_auto] sm:grid-cols-2 grid-cols-1 justify-between gap-7.5">
+                <!-- compnay info start -->
+                <div class="wow fadeInUp" data-wow-delay=".3s">
+                    <a href="" class="flex items-center gap-1">
+                        <img src="images/chhindwara.png" alt="img">
+                        <span class="font-bold text-3xl px-2">chhindwara Marathon</span>
+                    </a>
+                    <p class="pt-4">Indeed, the marathon brings together a diverse array of notable corporations and
+                        businesses from around the world</p>
+                    <ul class="flex items-center gap-5 pt-7.5">
+                        <li><a href="https://www.facebook.com/ChhindwaraMarathon"
+                                class="rounded-md w-9 h-9 flex items-center justify-center bg-warm hover:text-cream-foreground hover:bg-green transition-all duration-500"><i
+                                    class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.instagram.com/chhindwaramarathon/"
+                                class="rounded-md w-9 h-9 flex items-center justify-center bg-warm hover:text-cream-foreground hover:bg-green transition-all duration-500"><i
+                                    class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="https://x.com/ChhindwaraRun?mx=2"
+                                class="rounded-md w-9 h-9 flex items-center justify-center bg-warm hover:text-cream-foreground hover:bg-green transition-all duration-500"><i
+                                    class="fa-brands fa-x-twitter"></i></a></li>
+                    </ul>
+                </div>
+                <!-- compnay info end -->
+                <!-- pages link start -->
+                <div class="wow fadeInUp" data-wow-delay=".5s">
+                    <h3 class="text-2xl font-semibold">Pages</h3>
+                    <ul class="flex flex-col gap-[15px] pt-5">
+                        <li><a href=""
+                                class="text-[#686868] transition-all duration-500 hover:ml-1 hover:text-primary-foreground">About
+                                Us</a></li>
+                        <li><a href=""
+                                class="text-[#686868] transition-all duration-500 hover:ml-1 hover:text-primary-foreground">Latest
+                                Service</a></li>
+                        <li><a href=""
+                                class="text-[#686868] transition-all duration-500 hover:ml-1 hover:text-primary-foreground">Latest
+                                Blog And News</a></li>
+                        <li><a href=""
+                                class="text-[#686868] transition-all duration-500 hover:ml-1 hover:text-primary-foreground">FAQ</a>
+                        </li>
+                        <li><a href=""
+                                class="text-[#686868] transition-all duration-500 hover:ml-1 hover:text-primary-foreground">Our
+                                Creative Team Member</a></li>
+                    </ul>
+                </div>
+                <!-- pages link end -->
+                <!-- contact link start -->
+                <div class=" wow fadeInUp" data-wow-delay=".5s">
+                    <h3 class="text-2xl font-semibold">Contact</h3>
+                    <ul class="flex flex-col gap-[15px] pt-5">
+                        <li>
+                            <p class="text-[#686868] flex items-center gap-4">
+                                <span
+                                    class="w-11 h-11 rounded-full border border-gray-200 flex justify-center items-center text-green-foreground"><i
+                                        class="fa-solid fa-location-dot"></i></span> <span class="max-w-[168px]">DATCC-
+                                    Office of The Collector, Chhindwara-480001, Madhya Pradesh</span>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="text-[#686868] flex items-center gap-4">
+                                <span
+                                    class="w-11 h-11 rounded-full border border-gray-200 flex justify-center items-center text-green-foreground"><i
+                                        class="fa-solid fa-envelope"></i></span> <a
+                                    href="">chhindwaramarathon@gmail.com</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="text-[#686868] flex items-center gap-4">
+                                <span
+                                    class="w-11 h-11 rounded-full border border-gray-200 flex justify-center items-center text-green-foreground"><i
+                                        class="fa-solid fa-phone"></i></span> <a href="">+919993380898</a>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <!-- contact link end -->
+            </div>
+            <div class="pt-[75px] overflow-x-hidden">
+                <div
+                    class="flex lg:flex-row flex-col justify-between lg:items-center pt-7.5 pb-8 border-t border-t-white border-opacity-20">
+                    <p class="wow fadeInLeft" data-wow-delay=".3s">© <a href="">Uma Adventure</a> 2022 | All Rights
+                        Reserved</p>
+                    <ul class="flex items-center gap-7.5 wow fadeInRight" data-wow-delay=".3s">
+                        <li><a href="">Trams &amp; Condition</a></li>
+                        <li><a href="">Privacy Policy</a></li>
+                        <li><a href="">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="scroll-up"
+            class="absolute bottom-20 xl:left-[90%] left-1/2 -translate-x-1/2 w-12.5 h-12.5 rounded-full bg-primary text-cream-foreground flex justify-center items-center border-[3px] border-white cursor-pointer">
+            <i class="fa-solid fa-arrow-up"></i>
+        </div>
+    </footer>
+
+
+
+
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/animate.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

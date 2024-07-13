@@ -2929,7 +2929,7 @@ p {
 
 .after\:bg-testimonial-banner::after {
   content: var(--tw-content);
-  background-image: url("../images/bg-img.jpg");
+  background-image: url("../images/testimonial.jpeg");
 }
 
 .after\:bg-cover::after {
