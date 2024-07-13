@@ -43,8 +43,8 @@
             // Perform validation for Step 2 inputs
             if (validateStep2()) {
                 document.getElementById('step2').style.display = 'none';
-            document.getElementById('step1').style.display = 'none';
-            document.getElementById('theform').style.display = 'block';
+                document.getElementById('step1').style.display = 'none';
+                document.getElementById('theform').style.display = 'block';
             }
         }
 
@@ -204,6 +204,80 @@
                 document.getElementById('checkdobs_error').innerText = '';
             }
         }
+        // Function to allow only numbers in the contact number input
+        function isNumber(evt) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+
+        // Function to handle form submission
+        function submitForm() {
+            // Basic form validation
+            let isValid = true;
+            const contact = document.getElementById('contact').value;
+            const school = document.getElementById('school').value;
+            const address = document.getElementById('address').value;
+            const size = document.getElementById('size').value;
+            const self = document.getElementById('self').checked;
+            const terms = document.getElementById('terms').checked;
+
+            // Validate contact number
+            if (contact.length !== 10) {
+                isValid = false;
+                document.getElementById('contact1_error').textContent = 'Contact number must be 10 digits.';
+            } else {
+                document.getElementById('contact1_error').textContent = '';
+            }
+
+            // Validate school/company name
+            if (school.trim() === '') {
+                isValid = false;
+                document.getElementById('school1_error').textContent = 'School/College/Company Name is required.';
+            } else {
+                document.getElementById('school1_error').textContent = '';
+            }
+
+            // Validate address
+            if (address.trim() === '') {
+                isValid = false;
+                document.getElementById('address1_error').textContent = 'Address is required.';
+            } else {
+                document.getElementById('address1_error').textContent = '';
+            }
+
+            // Validate T-shirt size
+            if (size === '') {
+                isValid = false;
+                document.getElementById('tshirtss_error').textContent = 'Please select a T-shirt size.';
+            } else {
+                document.getElementById('tshirtss_error').textContent = '';
+            }
+
+            // Validate terms and conditions
+            if (!terms) {
+                isValid = false;
+                document.getElementById('recaptcha_error').textContent = 'You must agree to the terms and conditions.';
+            } else {
+                document.getElementById('recaptcha_error').textContent = '';
+            }
+
+            if (isValid) {
+                alert('Form submitted successfully!');
+                // You can now handle the form data submission, e.g., sending it to the server
+            }
+        }
+
+        // Callback function for Google reCAPTCHA
+        function recaptchaCallback(response) {
+            if (response) {
+                document.getElementById('recaptcha_error').textContent = '';
+            }
+        }
+        
+
 
     </script>
 </head>
@@ -603,7 +677,6 @@
                                                 class="form-control change w-full px-3 py-2 border border-gray-300 rounded">
                                                 <option value="">Select Blood Group</option>
                                                 <option value="A+">A+</option>
-                                                <!-- other options -->
                                             </select>
                                             <span id="blood_error" class="text-red-500 text-xs"
                                                 style="display: none;">** Please
@@ -623,7 +696,7 @@
                                                 <option value="5">5KM</option>
                                                 <option value="5">15KM</option>
                                                 <option value="5">25KM</option>
-                                                <!-- other options -->
+                                               
                                             </select>
                                             <span id="km_error" class="text-red-500 text-xs" style="display: none;">**
                                                 Please
@@ -640,7 +713,7 @@
                                                 class="form-control change w-full px-3 py-2 border border-gray-300 rounded">
                                                 <option value="">Select Occupation</option>
                                                 <option value="student">Student</option>
-                                                <!-- other options -->
+                                                
                                             </select>
                                             <span id="occupation_error" class="text-red-500 text-xs"
                                                 style="display: none;">**
@@ -650,10 +723,7 @@
                                     </div>
 
                                 </div>
-
-
-
-                                <div class="w-full md:w-1/2 px-3 col-md-offset-2">
+                                <div class="w-full px-3 mt-5">
                                     <div class="mb-4">
                                         <button onclick="step1()" type="button" class="btn btn-outline-primary"
                                             style="color:#ffff;background-color:#c9302c;font-size:15px;">BACK</button>
@@ -668,13 +738,13 @@
                         <!-- step 3 -->
                         <div id="theform" style="display: none;">
                             <div class="mx-3">
-                                <div class="grid md:grid-cols-2 gap-3 items-center">
+                                <div class="grid md:grid-cols-2 gap-3 items-center -ml-4">
                                     <div class="w-full">
                                         <div>
-                                            <label for="exampleInputEmail1">Emergency Contact Number <span
+                                            <label for="exampleInputEmail1" class="block text-gray-700 text-sm font-bold mb-2"">Emergency Contact Number <span
                                                     style="color:red;">*</span><span id="num"
                                                     style="color:red"></span></label>
-                                            <input type="text" class="form-control change" name="contact_number"
+                                            <input type="text" class="form-control change w-full px-3 py-2 border border-gray-300 rounded" name="contact_number"
                                                 onkeypress="return isNumber(event)" maxlength="10" minlength="10"
                                                 placeholder="Emergency Contact Number" required="" autocomplete="off"
                                                 id="contact">
@@ -686,10 +756,10 @@
                                     <div class="w-full">
                                         <div>
 
-                                            <label for="exampleInputEmail1">School/College/Company Name <span
+                                            <label for="exampleInputEmail1" class="block text-gray-700 text-sm font-bold mb-2">School/College/Company Name <span
                                                     style="color:red;">*</span></label>
 
-                                            <input type="text" class="form-control" id="school">
+                                            <input type="text" class="form-control change w-full px-3 py-2 border border-gray-300 rounded" id="school">
 
                                             <span id="school1_error" class="text-danger"></span>
 
@@ -699,8 +769,8 @@
                                         <div>
 
                                             <label for="exampleInputEmail1">Address <span
-                                                    style="color:red;">*</span></label>
-                                            <textarea class="form-control change" name="address" rows="3"
+                                                    style="color:red;" class="block text-gray-700 text-sm font-bold mb-2">*</span></label>
+                                            <textarea class="form-control change w-full px-3 py-2 border border-gray-300 rounded" name="address" rows="3"
                                                 placeholder="Address" required="" id="address"></textarea>
 
                                             <span id="address1_error" class="text-danger"></span>
@@ -711,10 +781,10 @@
                                     <div class="w-full">
                                         <div>
 
-                                            <label for="exampleInputEmail1">Select T-shirt Size<span
+                                            <label for="exampleInputEmail1" class="block text-gray-700 text-sm font-bold mb-2">Select T-shirt Size<span
                                                     style="color:red;">*</span></label>
 
-                                            <select class="form-control" id="size">
+                                            <select class="form-control change w-full px-3 py-2 border border-gray-300 rounded" id="size">
                                                 <option value="">Select T-shirt Size </option>
                                                 <option value="S">S (38)</option>
                                                 <option value="M">M (40)</option>
@@ -761,29 +831,29 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="w-full px-3 mt-5">
+                                    <div class="w-full px-3 mt-10">
                                         <div class="mb-4 text-center">
-                                            <button type="button" class="btn btn-primary text-center"
-                                            onclick="abhishek()">Submit</button>
-            
-                                        <button onclick="step2()" type="button" class="btn btn-outline-primary"
-                                            style="color:#ffff;background-color:#c9302c;font-size:15px;">BACK</button>
+                                            <button type="button" class="btn btn-primary bg-blue-500 text-center text-white"
+                                                onclick="abhishek()">Submit</button>
+
+                                            <button onclick="step2()" type="button" class="btn btn-outline-primary"
+                                                style="color:#ffff;background-color:#c9302c;font-size:15px;">BACK</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                <!-- Add more steps as needed -->
-                </form>
+                        <!-- Add more steps as needed -->
+                    </form>
 
+                </div>
+                <div class="flex absolute right-[87px] top-14 animate-skw">
+                    <img src="images/shap.png" alt="shap-2" class="w-7.5 h-12.5 relative top-9">
+                    <img src="images/shap.png" alt="shap-1">
+                    <img src="images/shap.png" alt="shap-2" class="w-5 h-8 -mt-7">
+                </div>
             </div>
-            <div class="flex absolute right-[87px] top-14 animate-skw">
-                <img src="images/shap.png" alt="shap-2" class="w-7.5 h-12.5 relative top-9">
-                <img src="images/shap.png" alt="shap-1">
-                <img src="images/shap.png" alt="shap-2" class="w-5 h-8 -mt-7">
-            </div>
-        </div>
         </div>
         <!-- circle shap -->
         <div class="lg:block hidden">
@@ -1082,10 +1152,10 @@
 
         });
     </script>
-     <script src="js/swiper-bundle.min.js"></script>
-     <script src="js/animate.js"></script>
-     <script src="js/wow.min.js"></script>
-     <script src="js/main.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/animate.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/main.js"></script>
 
 </body>
 
