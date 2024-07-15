@@ -28,6 +28,7 @@
                 document.getElementById('step1').style.display = 'none';
                 document.getElementById('step2').style.display = 'block';
                 document.getElementById('theform').style.display = 'none';
+                document.getElementById('otp').style.display = 'none'
             }
         }
 
@@ -36,6 +37,7 @@
             document.getElementById('step2').style.display = 'none';
             document.getElementById('step1').style.display = 'block';
             document.getElementById('theform').style.display = 'none';
+            document.getElementById('otp').style.display = 'none'
         }
 
         // Function to switch to Step 3 (Next button in Step 2)
@@ -45,8 +47,21 @@
                 document.getElementById('step2').style.display = 'none';
                 document.getElementById('step1').style.display = 'none';
                 document.getElementById('theform').style.display = 'block';
+                document.getElementById('otp').style.display = 'none'
             }
         }
+        function submit() {
+            if (submitForm()) {
+                document.getElementById('step2').style.display = 'none';
+                document.getElementById('step1').style.display = 'none';
+                document.getElementById('theform').style.display = 'none';
+                document.getElementById('otp').style.display = 'block'
+
+            }
+
+        }
+
+
 
         // Function to validate Step 1 inputs
         function validateStep1() {
@@ -276,7 +291,7 @@
                 document.getElementById('recaptcha_error').textContent = '';
             }
         }
-        
+
 
 
     </script>
@@ -705,7 +720,7 @@
                                                 <option value="5">5KM</option>
                                                 <option value="5">15KM</option>
                                                 <option value="5">21KM</option>
-                                               
+
                                             </select>
                                             <span id="km_error" class="text-red-500 text-xs" style="display: none;">**
                                                 Please
@@ -725,7 +740,7 @@
                                                 <option value="student">Business</option>
                                                 <option value="student">Job</option>
                                                 <option value="student">Others</option>
-                                                
+
                                             </select>
                                             <span id="occupation_error" class="text-red-500 text-xs"
                                                 style="display: none;">**
@@ -753,13 +768,15 @@
                                 <div class="grid md:grid-cols-2 gap-3 items-center -ml-4">
                                     <div class="w-full">
                                         <div>
-                                            <label for="exampleInputEmail1" class="block text-gray-700 text-sm font-bold mb-2"">Emergency Contact Number <span
-                                                    style="color:red;">*</span><span id="num"
+                                            <label for="exampleInputEmail1"
+                                                class="block text-gray-700 text-sm font-bold mb-2"">Emergency Contact Number <span
+                                                    style=" color:red;">*</span><span id="num"
                                                     style="color:red"></span></label>
-                                            <input type="text" class="form-control change w-full px-3 py-2 border border-gray-300 rounded" name="contact_number"
-                                                onkeypress="return isNumber(event)" maxlength="10" minlength="10"
-                                                placeholder="Emergency Contact Number" required="" autocomplete="off"
-                                                id="contact">
+                                            <input type="text"
+                                                class="form-control change w-full px-3 py-2 border border-gray-300 rounded"
+                                                name="contact_number" onkeypress="return isNumber(event)" maxlength="10"
+                                                minlength="10" placeholder="Emergency Contact Number" required=""
+                                                autocomplete="off" id="contact">
                                             <span id="contact1_error" class="text-danger"></span>
                                             <span style="color: red; font-size: 10px;" id="sameDispaly"> </span>
 
@@ -768,10 +785,13 @@
                                     <div class="w-full">
                                         <div>
 
-                                            <label for="exampleInputEmail1" class="block text-gray-700 text-sm font-bold mb-2">School/College/Company Name <span
-                                                    style="color:red;">*</span></label>
+                                            <label for="exampleInputEmail1"
+                                                class="block text-gray-700 text-sm font-bold mb-2">School/College/Company
+                                                Name <span style="color:red;">*</span></label>
 
-                                            <input type="text" class="form-control change w-full px-3 py-2 border border-gray-300 rounded" id="school">
+                                            <input type="text"
+                                                class="form-control change w-full px-3 py-2 border border-gray-300 rounded"
+                                                id="school">
 
                                             <span id="school1_error" class="text-danger"></span>
 
@@ -780,9 +800,13 @@
                                     <div class="w-full">
                                         <div>
 
-                                            <label for="exampleInputEmail1" class="block text-gray-700 text-sm font-bold mb-2">Address<span style="color:red;" >*</span></label>
-                                            <textarea class="form-control change w-full px-3 py-2 border border-gray-300 rounded" name="address" rows="3"
-                                                placeholder="Address" required="" id="address"></textarea>
+                                            <label for="exampleInputEmail1"
+                                                class="block text-gray-700 text-sm font-bold mb-2">Address<span
+                                                    style="color:red;">*</span></label>
+                                            <textarea
+                                                class="form-control change w-full px-3 py-2 border border-gray-300 rounded"
+                                                name="address" rows="3" placeholder="Address" required=""
+                                                id="address"></textarea>
 
                                             <span id="address1_error" class="text-danger"></span>
 
@@ -792,10 +816,13 @@
                                     <div class="w-full">
                                         <div>
 
-                                            <label for="exampleInputEmail1" class="block text-gray-700 text-sm font-bold mb-2">Select T-shirt Size<span
-                                                    style="color:red;">*</span></label>
+                                            <label for="exampleInputEmail1"
+                                                class="block text-gray-700 text-sm font-bold mb-2">Select T-shirt
+                                                Size<span style="color:red;">*</span></label>
 
-                                            <select class="form-control change w-full px-3 py-2 border border-gray-300 rounded" id="size">
+                                            <select
+                                                class="form-control change w-full px-3 py-2 border border-gray-300 rounded"
+                                                id="size">
                                                 <option value="">Select T-shirt Size </option>
                                                 <option value="S">S (38)</option>
                                                 <option value="M">M (40)</option>
@@ -844,8 +871,9 @@
                                     </div>
                                     <div class="w-full px-3 mt-10">
                                         <div class="mb-4 text-center">
-                                            <button type="button" class="btn btn-primary bg-blue-500 text-center text-white"
-                                                onclick="abhishek()">Submit</button>
+                                            <button type="button"
+                                                class="btn btn-primary bg-blue-500 text-center text-white"
+                                                onclick="submit()">Submit</button>
 
                                             <button onclick="step2()" type="button" class="btn btn-outline-primary"
                                                 style="color:#ffff;background-color:#c9302c;font-size:15px;">BACK</button>
@@ -854,6 +882,32 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Add more steps as needed -->
+                    </form>
+                    <form id="otp" style="display: none;">
+                        <!-- otp -->
+                        <div class="grid md:grid-cols-2 gap-3 items-center">
+                            <div class="w-full">
+                                <div>
+                                    <label for="exampleInputEmail1"
+                                        class="block text-gray-700 text-sm font-bold mb-2">Verify OTP</label>
+
+
+                                    <input type="text"
+                                        class="form-control change w-full px-3 py-2 border border-gray-300 rounded"
+                                        aria-describedby="emailHelp" onkeypress="return isNumber(event)" maxlength="4"
+                                        minlength="4" id="otpss">
+                                    <div class="screenNameError"></div>
+                                    <br>
+                                    <!-- <button type="button"   class="btn btn-secondary"  onclick="votps()">OTP Verification</button> -->
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
 
                         <!-- Add more steps as needed -->
                     </form>
